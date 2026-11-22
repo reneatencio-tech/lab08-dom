@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeguriTec - Registro de peligros</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 15px;
+        }
+
+        header {
+            background: #173952;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #173952;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .alto {
+            color: #c0392b;
+        }
+
+        .medio {
+            color: #d68910;
+        }
+
+        .bajo {
+            color: #278541;
+        }
+
+        .controlado {
+            background: #d5f5e3;
+        }
+
+        .eliminar {
+            background: #c0392b;
+        }
+
+        .error {
+            color: #c0392b;
+        }
+
+        footer {
+            text-align: center;
+            color: #666;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SeguriTec</h1>
+        <p>Registro interactivo de peligros en el trabajo</p>
+        <p>Identificar, evaluar y controlar</p>
+    </header>
+
+    <section>
+        <h2>Registrar nuevo peligro</h2>
+
+        <form id="formulario">
+
+            <label for="nombre">Descripcion del peligro:</label>
+
+            <input id="nombre" type="text"
+                   placeholder="Ingrese un peligro">
+
+            <label for="nivel">Nivel de riesgo:</label>
+
+            <select id="nivel">
+                <option value="Alto">Alto</option>
+                <option value="Medio">Medio</option>
+                <option value="Bajo">Bajo</option>
+            </select>
+
+            <button type="submit">Registrar peligro</button>
+
+        </form>
+
+        <p id="mensaje"></p>
+    </section>
+
+    <section>
+        <h2>Peligros registrados</h2>
+
+        <ul id="listaPeligros"></ul>
+    </section>
+
+    <footer>
+        <p>TECSUP - Laboratorio 08</p>
+        <p>JavaScript Interactivo: DOM, Eventos y Objetos</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
