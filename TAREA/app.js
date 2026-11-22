@@ -3,7 +3,8 @@
 
 console.log("SeguriTec iniciado");
 
-// Clase propia
+// 1. Clase propia
+
 class Peligro {
 
     constructor(nombre, nivel) {
@@ -21,24 +22,33 @@ class Peligro {
     }
 }
 
-// Objetos de prueba
-const peligro1 = new Peligro("Trabajos en altura", "Alto");
+// 2. Objetos de prueba
 
+const peligro1 = new Peligro("Trabajos en altura", "Alto");
 const peligro2 = new Peligro("Piso resbaladizo", "Medio");
 
 console.log(peligro1.descripcion());
 console.log(peligro2.descripcion());
 
+// 3. Seleccionar elementos del DOM
 
-// Seleccionar la lista de peligros
 const listaPeligros = document.querySelector("#listaPeligros");
+const formulario = document.querySelector("#formulario");
+const nombre = document.querySelector("#nombre");
+const nivel = document.querySelector("#nivel");
+const mensaje = document.querySelector("#mensaje");
 
-// Funcion para mostrar un peligro en la pagina
+// 4. Funcion para mostrar los peligros
+
 function mostrarPeligro(peligro) {
 
     const li = document.createElement("li");
 
-    li.textContent = peligro.descripcion();
+    const texto = document.createElement("span");
+
+    texto.textContent = peligro.descripcion();
+
+    // Colores segun el nivel de riesgo
 
     if (peligro.nivel === "Alto") {
         li.classList.add("alto");
@@ -48,9 +58,89 @@ function mostrarPeligro(peligro) {
         li.classList.add("bajo");
     }
 
+    // 5. Boton controlar
+
+    const btnControlar = document.createElement("button");
+
+    btnControlar.textContent = "Controlar";
+
+    btnControlar.addEventListener("click", () => {
+
+        peligro.controlar();
+
+        texto.textContent = peligro.descripcion()
+            + " - CONTROLADO";
+
+        li.classList.add("controlado");
+
+        btnControlar.disabled = true;
+        btnControlar.textContent = "Controlado";
+
+    });
+
+    // 6. Boton eliminar
+
+    const btnEliminar = document.createElement("button");
+
+    btnEliminar.textContent = "Eliminar";
+
+    btnEliminar.classList.add("eliminar");
+
+    btnEliminar.addEventListener("click", () => {
+
+        li.remove();
+
+    });
+
+    // Agregar elementos al DOM
+
+    li.appendChild(texto);
+    li.appendChild(btnControlar);
+    li.appendChild(btnEliminar);
+
     listaPeligros.appendChild(li);
 }
 
-// Mostrar los objetos de prueba
+// 7. Mostrar los objetos de prueba
+
 mostrarPeligro(peligro1);
 mostrarPeligro(peligro2);
+
+// 8. Evento submit para registrar peligros
+
+formulario.addEventListener("submit", (evento) => {
+
+    evento.preventDefault();
+
+    // Validar campo vacio
+
+    if (nombre.value.trim() === "") {
+
+        mensaje.textContent = "Ingrese la descripcion del peligro";
+        mensaje.classList.add("error");
+
+    } else {
+
+        // Crear un nuevo objeto
+
+        const nuevoPeligro = new Peligro(
+            nombre.value.trim(),
+            nivel.value
+        );
+
+        // Mostrar el nuevo peligro
+
+        mostrarPeligro(nuevoPeligro);
+
+        mensaje.textContent = "Peligro registrado correctamente";
+        mensaje.classList.remove("error");
+
+        // Limpiar el campo
+
+        nombre.value = "";
+
+        console.log(nuevoPeligro.descripcion());
+
+    }
+
+});

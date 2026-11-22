@@ -19,9 +19,15 @@ CSS y JavaScript.
 
 | Accion | Resultado esperado | Cumple (Si/No) |
 |--------|--------------------|----------------|
-| Registrar peligro | | |
-| Marcar como controlado | | |
-| Eliminar peligro | | |
-| Registrar un campo vacio | | |
+| Registrar Energia Electrica con nivel Alto | Se agrega un peligro de color rojo | Si |
+| Registrar Superficie Irregular con nivel Medio | Se agrega un peligro de color naranja | Si |
+| Registrar Desorden de Materiales con nivel Bajo | Se agrega un peligro de color verde | Si |
+| Presionar Controlar en Trabajos en altura | Cambia el fondo a verde claro y aparece CONTROLADO | Si |
+| Presionar Eliminar en Ruido y Piso resbaladizo | Los elementos desaparecen sin afectar los demas registros | Si |
+| Registrar sin ingresar una descripcion | Aparece un mensaje de error y no se crea el objeto | Si |
+
+Todas las pruebas realizadas fueron satisfactorias.
+Se verificaron las seis funcionalidades de la aplicacion
+mediante pruebas manuales en Google Chrome.
 
 ## Por que disene asi mi clase
